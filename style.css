@@ -1,0 +1,229 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Patrick Hand', sans-serif;
+    background-color: #fdf2f8;
+    position: relative;
+    overflow: hidden;
+}
+
+body:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: url('assets/desk-placeholder.jpg') no-repeat center center/cover;
+    background-size: cover;
+    /* Ensures full coverage of the screen */
+    z-index: 0;
+    /* Lowest layer */
+}
+
+
+/* Journal Cover (Login Screen) */
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 10;
+}
+
+#journal-cover {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 400px;
+    background: #f3c7d1;
+    /* Light pink */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+}
+
+#password-field {
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+#login-button {
+    background-color: #d88da5;
+    /* Deeper pink */
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#lock-icon {
+    width: 30px;
+    height: 30px;
+    margin: 20px auto;
+    background: url('assets/lock-placeholder.png') no-repeat center/contain;
+}
+
+
+/* Unlock Journal Animation */
+@keyframes open-journal {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1) rotate(5deg);
+        /* Slight zoom/tilt */
+    }
+
+    100% {
+        transform: translateY(-200px) scale(0.5);
+        /* Move away */
+        opacity: 0;
+    }
+}
+
+@keyframes close-journal {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.9) rotate(-5deg);
+        /* Slight shrinking and tilting */
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(200px) scale(0.5);
+        /* Move down and shrink */
+    }
+}
+
+
+/* Journal Container */
+#journal {
+    position: relative;
+    animation: none;
+    z-index: 10;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fdf2f8;
+    /* Pastel pink for debugging visibility */
+}
+
+
+
+#journal-pages {
+    display: flex;
+    width: 80%;
+    height: 70%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Left and Right Pages */
+.page {
+    flex: 1;
+    padding: 20px;
+    font-size: 16px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    /* Optional: adds a "notebook" feel */
+}
+
+/* Page Titles */
+.page-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #555;
+    text-align: center;
+}
+
+/* Journal Input Field */
+.journal-input {
+    width: 100%;
+    height: 80%;
+    border: none;
+    resize: none;
+    outline: none;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 16px;
+    background: #fdf2f8;
+    color: #333;
+    padding: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#close-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+    /* Ensure it's above other elements */
+}
+
+#close-button img {
+    width: 30px;
+    /* Adjust size as needed */
+    height: 30px;
+    object-fit: contain;
+    /* Keeps the image proportions */
+}
+
+/* Mobile Styles (Target screens smaller than 768px) */
+@media (max-width: 768px) {
+    #journal-pages {
+        flex-direction: column;
+        /* Stack pages vertically */
+        width: 90%;
+        /* Adjust width for mobile */
+        height: 80%;
+        /* Adjust height for mobile */
+        background: rgba(255, 255, 255, 0.9);
+        /* Add slight transparency */
+    }
+
+    .page {
+        flex: none;
+        width: 100%;
+        /* Take full width on mobile */
+        height: 100%;
+        /* Adjust height for readability */
+        margin: 0 auto;
+        /* Center align single page */
+        border: 1px solid #ddd;
+        background-color: #fefefe;
+        padding: 10px;
+        overflow-y: auto;
+        /* Ensure scrollability for long content */
+    }
+
+    #prev-page,
+    #next-page {
+        display: none;
+        /* Hide page-turn buttons for mobile scroll mode */
+    }
+
+    body {
+        background-size: contain;
+        /* Adjust background scaling for mobile */
+    }
+}

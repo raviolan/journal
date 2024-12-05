@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Journal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Cluttered Desk Background -->
+    <div id="desk-background">
+        <div id="login-container">
+            <div id="journal-cover">
+                <h1>My Journal</h1>
+                <input type="password" id="password-field" placeholder="Enter Password">
+                <button id="login-button">Unlock</button>
+                <div id="lock-icon"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Journal (Revealed After Login) -->
+    <div id="journal">
+        <button id="toggle-mode">Switch to Scroll Mode</button>
+        <button id="close-button">
+            <img src="assets/placeholder-close-button.png" alt="Close" />
+        </button>
+        <div id="journal-pages">
+            <!-- Left Page -->
+            <div class="page left-page">
+                <h2 class="page-title">Journal Entry</h2>
+                <textarea class="journal-input" placeholder="Write here..."></textarea>
+            </div>
+            <!-- Right Page -->
+            <div class="page right-page">
+                <h2 class="page-title">Add Stickers, Drawings, or Images</h2>
+                <div class="media-placeholder">
+                    <p>Drop images or drag items here!</p>
+                </div>
+            </div>
+        </div>
+        <button id="prev-page">←</button>
+        <button id="next-page">→</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
